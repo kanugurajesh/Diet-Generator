@@ -10,12 +10,11 @@ generate_button = st.button('Generate')
 
 if generate_button:
 	print('Generating Diet...')
-	st.write('Generating Diet...')
 	with st.spinner("Generating your diet plan..."):
 		try:
-			diet = generate_diet(...)
-			st.markdown(diet.content)
+			diet = generate_diet(age=age, body_comp=body_comp, activity_level=activity, gender=gender)
 			st.download_button("Download Plan", data=diet.content, file_name="diet_plan.txt")
+			st.markdown(diet.content)
 		except Exception as e:
 			st.error("Something Went wrong. Please try again.")
 			st.text(str(e))
